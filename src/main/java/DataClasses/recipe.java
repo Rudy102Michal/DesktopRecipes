@@ -7,22 +7,22 @@ import java.util.List;
 /**
  * Created by Michał on 2016-06-15.
  */
-public class recipe {
-    private List<ingredient> recipeIngredients;
+public class Recipe {
+    private List<Ingredient> recipeIngredients;
     public String recipeName;
     private int[] prepTime;
     public List<DefaultTags> recipeTags;
     private String recipeComment;
 
 
-    public recipe() {
-        this.recipeIngredients = new ArrayList<ingredient>();
+    public Recipe() {
+        this.recipeIngredients = new ArrayList<Ingredient>();
         this.prepTime = new int[2];
         this.recipeTags = new ArrayList<DefaultTags>();
     }
 
-    public recipe(List<ingredient> recipeIngredients, String recipeName, int[] prepTime, List<DefaultTags> recipeTags, String ingredientComment) {
-        this.recipeIngredients = new ArrayList<ingredient>(recipeIngredients);
+    public Recipe(List<Ingredient> recipeIngredients, String recipeName, int[] prepTime, List<DefaultTags> recipeTags, String ingredientComment) {
+        this.recipeIngredients = new ArrayList<Ingredient>(recipeIngredients);
         this.recipeName = recipeName;
         this.prepTime = new int[2];
         this.prepTime = prepTime;
@@ -30,7 +30,7 @@ public class recipe {
         this.recipeComment = ingredientComment;
     }
 
-    public void addIngredient(ingredient newIngredient){
+    public void addIngredient(Ingredient newIngredient){
         recipeIngredients.add(newIngredient);
     }
 
@@ -52,10 +52,10 @@ public class recipe {
         System.out.println(this.recipeName);
         System.out.println(this.prepTime[0]);
         System.out.println(this.prepTime[1]);
-        Iterator<ingredient> it = this.recipeIngredients.iterator();
+        Iterator<Ingredient> it = this.recipeIngredients.iterator();
         while(it.hasNext())
         {
-            ingredient tmp = it.next();
+            Ingredient tmp = it.next();
             System.out.print(tmp.ingredientName);
 
             System.out.print(tmp.getIngredientQuantity());

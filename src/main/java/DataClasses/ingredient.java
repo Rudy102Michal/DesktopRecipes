@@ -3,28 +3,44 @@ package DataClasses;
 /**
  * Created by Michał on 2016-06-15.
  */
-public class ingredient {
+public class Ingredient {
     public String ingredientName;
-    private Unit ingredientUnit;
-    private double ingredientQuantity;
+    public Unit ingredientUnit;
+    public double ingredientQuantity;
 
-    public ingredient(String ingredientName, double ingredientQuantity, Unit ingredientUnit) {
+    public Ingredient(String ingredientName, double ingredientQuantity, Unit ingredientUnit) {
         this.ingredientName = ingredientName;
         this.ingredientQuantity = ingredientQuantity;
         this.ingredientUnit = ingredientUnit;
     }
 
-    public ingredient(String ingredientName) {
+    public Ingredient(String ingredientName) {
         this.ingredientName = ingredientName;
         this.ingredientQuantity = -1;
         this.ingredientUnit = Unit.UNKN;
+    }
+
+    public String getIngredientName() {
+        return ingredientName;
+    }
+
+    public void setIngredientName(String ingredientName) {
+        this.ingredientName = ingredientName;
     }
 
     public Unit getIngredientUnit() {
         return ingredientUnit;
     }
 
+    public void setIngredientUnit(Unit ingredientUnit) {
+        this.ingredientUnit = ingredientUnit;
+    }
+
     public double getIngredientQuantity() {
         return ingredientQuantity;
+    }
+
+    public void setIngredientQuantity(double ingredientQuantity) {
+        this.ingredientQuantity = ingredientQuantity;
     }
 }

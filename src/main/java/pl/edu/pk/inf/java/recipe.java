@@ -8,7 +8,7 @@ import java.util.List;
  * Created by Michał on 2016-06-08.
  *
  * Recipe class.
- * Indicative preparation time for pl.edu.pk.inf.java.recipe, prepTime, should always be 2 element array. Ex.: 15-20min
+ * Indicative preparation time for pl.edu.pk.inf.java.Recipe, prepTime, should always be 2 element array. Ex.: 15-20min
  */
 public class recipe {
     private List<ingredient> recipeIngredients;

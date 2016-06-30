@@ -1,3 +1,4 @@
+import GlobalData.GlobalVars;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,14 +11,16 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("app.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("newRecipe.fxml"));
         primaryStage.setTitle("42");
-        primaryStage.setScene(new Scene(root, 800, 500));
+        primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
 
 
     public static void main(String[] args) {
+
+        final GlobalVars appGlobalVars = new GlobalVars();
         launch(args);
     }
 }

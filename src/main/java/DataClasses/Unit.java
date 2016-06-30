@@ -13,5 +13,45 @@ public enum Unit {
     GLASS,
     PACK,
     AMOUNT,
-    UNKN
+    UNKN;
+
+
+    @Override
+    public String toString() {
+
+        String ret;
+        switch(this) {
+            case GRAM:
+                ret = "gram";
+                break;
+            case DG:
+                ret = "dekagram";
+                break;
+            case KG:
+                ret = "kilogram";
+                break;
+            case LITER:
+                ret = "litr";
+                break;
+            case ML:
+                ret = "mililitr";
+                break;
+            case SPOON:
+                ret = "łyżeczka";
+                break;
+            case GLASS:
+                ret = "szklanka";
+                break;
+            case PACK:
+                ret = "paczka";
+                break;
+            case AMOUNT:
+                ret = "sztuk";
+                break;
+            default:
+                ret = "unknown";
+                break;
+        }
+        return ret;
+    }
 }
