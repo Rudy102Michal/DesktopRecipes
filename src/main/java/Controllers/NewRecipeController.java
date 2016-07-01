@@ -4,8 +4,12 @@ import DataClasses.DefaultTags;
 import DataClasses.Recipe;
 import DataClasses.Unit;
 import DataClasses.Ingredient;
+import DialogBoxes.AlertBox;
 import GlobalData.GlobalVars;
 
+import LocalExceptions.ExceptionNoIngredient;
+import LocalExceptions.ExceptionNoIntegerInput;
+import LocalExceptions.ExceptionNoTextInput;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -52,16 +56,6 @@ public class NewRecipeController implements Initializable {
     public TableColumn<ObservableIngredient, Double> tableColumnQuantity;
     public TableColumn<ObservableIngredient, String> tableColumnUnit;
 
-
-    private Recipe tmpRecipe;
-    private Ingredient tmpIngredient;
-
-    public NewRecipeController() {
-        tmpRecipe = new Recipe();
-        this.checkBoxes = new ArrayList<CheckBox>(Arrays.asList(checkVegan, checkVegan, checkVegetarian, checkMediterrean, checkOriental, checkEuropean, checkItalian, checkFrench, checkEnglish, checkPolish, checkAlcohol));
-
-    }
-
     public void initialize(URL location, ResourceBundle resources) {
         tableColumnName.setCellValueFactory(new PropertyValueFactory<ObservableIngredient, String>("ingredientName"));
         tableColumnQuantity.setCellValueFactory(new PropertyValueFactory<ObservableIngredient, Double>("ingredientQuantity"));
@@ -73,9 +67,66 @@ public class NewRecipeController implements Initializable {
     }
 
     public void addNewRecipe(){
-        tmpRecipe.recipeName = recipeName.getText();
-        tmpRecipe.setRecipeComment(recipeComment.getText());
-        tmpRecipe.setPrepTime(Integer.parseInt(prepTimeFrom.getText()), Integer.parseInt(prepTimeTo.getText()));
+
+        Recipe tmpRecipe = new Recipe();
+
+        try {
+            tmpRecipe.recipeName = recipeName.getText();
+            if(tmpRecipe.recipeName.equals(""))
+                throw new ExceptionNoTextInput();
+        }
+        catch(ExceptionNoTextInput e)
+        {
+            AlertBox mess = new AlertBox("Nie podano nazwy przepisu", "Brak nazwy");
+            mess.displayMessage();
+            return;
+        }
+
+        try {
+            tmpRecipe.setRecipeComment(recipeComment.getText());
+            if(recipeComment.getText().equals(""))
+                throw new ExceptionNoTextInput();
+        }
+        catch(ExceptionNoTextInput e)
+        {
+            AlertBox mess = new AlertBox("Nie podano opisu do przepisu", "Brak opisu");
+            mess.displayMessage();
+            return;
+        }
+
+        try {
+            if(prepTimeFrom.getText().isEmpty() || prepTimeTo.getText().isEmpty())
+                throw new ExceptionNoIntegerInput();
+            else
+            {
+                try {
+                    tmpRecipe.setPrepTime(Integer.parseInt(prepTimeFrom.getText()), Integer.parseInt(prepTimeTo.getText()));
+                }
+                catch(NumberFormatException e)
+                {
+                    AlertBox mess = new AlertBox("Podane wartości dla czasu przygotowania nie są wartościami całkowitymi", "Błędny czas przygotowania");
+                    mess.displayMessage();
+                    return;
+                }
+            }
+        }
+        catch(ExceptionNoIntegerInput e)
+        {
+            AlertBox mess = new AlertBox("Nie podano czasu przygotowania", "Brak czasu przygotowania");
+            mess.displayMessage();
+            return;
+        }
+
+        try {
+            if(observableRecipeIngredients.isEmpty())
+                throw new ExceptionNoIngredient();
+        }
+        catch(ExceptionNoIngredient e)
+        {
+            AlertBox mess = new AlertBox("Do przepisu nie dodano żadnego składniku", "Brak składników");
+            mess.displayMessage();
+            return;
+        }
 
         if(checkVegan.isSelected())
             tmpRecipe.recipeTags.add(DefaultTags.VEGAN);
@@ -98,15 +149,44 @@ public class NewRecipeController implements Initializable {
         if(checkAlcohol.isSelected())
             tmpRecipe.recipeTags.add(DefaultTags.ALCOHOL);
 
-        Ingredient in1 = new Ingredient("bekon", 2.5, Unit.KG);
-        Ingredient in2 = new Ingredient("piwo", 3, Unit.AMOUNT);
-        Ingredient in3 = new Ingredient("czosnek", 1, Unit.SPOON);
+        for(ObservableIngredient ing : observableRecipeIngredients)
+        {
+            tmpRecipe.addIngredient(new Ingredient(ing.getIngredientName(), ing.getIngredientQuantity(), convertUnit(ing.getIngredientUnit())));
+        }
 
-        tmpRecipe.addIngredient(in1);
-        tmpRecipe.addIngredient(in2);
-        tmpRecipe.addIngredient(in3);
+        clearObjects();
+        tmpRecipe.testPrint();          //container function that takes recipe as argument here
+    }
 
-        tmpRecipe.testPrint();
+    private Unit convertUnit(String strUnit)
+    {
+        for(Unit u : Unit.values())
+        {
+            if(strUnit.equals(u.toString()))
+                return u;
+        }
+
+        return Unit.UNKN;
+    }
+
+    private void clearObjects()
+    {
+        recipeName.clear();
+        recipeComment.clear();
+        prepTimeFrom.clear();
+        prepTimeTo.clear();
+        observableRecipeIngredients.clear();
+
+        checkEuropean.setSelected(false);
+        checkEnglish.setSelected(false);
+        checkFrench.setSelected(false);
+        checkAlcohol.setSelected(false);
+        checkItalian.setSelected(false);
+        checkMediterrean.setSelected(false);
+        checkOriental.setSelected(false);
+        checkPolish.setSelected(false);
+        checkVegan.setSelected(false);
+        checkVegetarian.setSelected(false);
     }
 
     public void deleteIngredient()
@@ -124,7 +204,13 @@ public class NewRecipeController implements Initializable {
         try {
             FXMLLoader n1 = new FXMLLoader(getClass().getResource("../newIngredient.fxml"));
             Parent newWindow = n1.load();
+            NewIngredientController tmpController = n1.getController();
             stage.setTitle("Dodaj nowy składnik");
+
+            stage.setOnCloseRequest(e -> {
+                e.consume();
+                tmpController.roughExit();
+            });
             stage.setScene(new Scene(newWindow));
             stage.showAndWait();
         }
@@ -134,11 +220,9 @@ public class NewRecipeController implements Initializable {
         }
 
         if(GlobalVars.dataAvailable) {
-            tmpIngredient = GlobalVars.tempIngredient;
+            Ingredient tmpIngredient = GlobalVars.tempIngredient;
             GlobalVars.dataAvailable = false;
-            System.out.print("test1\n");
             ingredientsTable.getItems().add(new ObservableIngredient(tmpIngredient));
-            System.out.print("test2\n");
         }
     }
 

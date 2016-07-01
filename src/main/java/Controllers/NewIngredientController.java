@@ -2,6 +2,8 @@ package Controllers;
 
 import DataClasses.Unit;
 import DataClasses.Ingredient;
+import DialogBoxes.AlertBox;
+import DialogBoxes.DecisionBox;
 import javafx.fxml.Initializable;
 
 import java.net.URL;
@@ -39,7 +41,7 @@ public class NewIngredientController implements Initializable {
 
     public void sendNewIngredient()
     {
-        Unit tempUnit = Unit.UNKN;
+        Unit tempUnit = Unit.UNKN;                                  //change to switch/case
         if(ingredientUnit.getValue() == Unit.GRAM.toString())
             tempUnit = Unit.GRAM;
         if(ingredientUnit.getValue() == Unit.DG.toString())
@@ -59,11 +61,43 @@ public class NewIngredientController implements Initializable {
         if(ingredientUnit.getValue() == Unit.AMOUNT.toString())
             tempUnit = Unit.AMOUNT;
 
-        GlobalVars.tempIngredient = new Ingredient(ingredientName.getText(), Double.parseDouble(ingredientQuantity.getText()), tempUnit);
-        GlobalVars.dataAvailable = true;
+        if(!ingredientName.getText().isEmpty() && !ingredientQuantity.getText().isEmpty()) {
+            try {
+                GlobalVars.tempIngredient = new Ingredient(ingredientName.getText(), Double.parseDouble(ingredientQuantity.getText()), tempUnit);
+            }
+            catch(NumberFormatException e)
+            {
+                AlertBox mess = new AlertBox("Pole \"Ilość\" musi być wartością całkowitą \nlub zmiennoprzecinkową", "Niepoprawny input");
+                mess.displayMessage();
+                ingredientQuantity.clear();
+                return;
+            }
+            GlobalVars.dataAvailable = true;
+            Stage stage = (Stage) buttAddIngredient.getScene().getWindow();
+            stage.close();
+        }
+        else
+        {
+            AlertBox mess = new AlertBox("Musisz podać nazwe składnika i jego ilość", "Niepoprawny input");
+            mess.displayMessage();
+        }
+    }
 
+    public void roughExit()
+    {
         Stage stage = (Stage) buttAddIngredient.getScene().getWindow();
-        stage.close();
+        if(!ingredientName.getText().isEmpty() || !ingredientQuantity.getText().isEmpty())
+        {
+            DecisionBox mess = new DecisionBox("Nie skończono wprowadzać nowego składnika.\nCzy na pewno chcesz wyjść?", "");
+            mess.displayMessage();
+            if(mess.isDecision())
+                stage.close();
+
+        }
+        else
+        {
+            stage.close();
+        }
     }
 
     public void meth()

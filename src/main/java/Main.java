@@ -1,3 +1,4 @@
+import Controllers.NewIngredientController;
 import GlobalData.GlobalVars;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
