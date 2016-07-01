@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.*;
 
+
 /**
  * Created by Michał on 2016-06-15.
  */
@@ -156,6 +157,7 @@ public class NewRecipeController implements Initializable {
 
         clearObjects();
         tmpRecipe.testPrint();          //container function that takes recipe as argument here
+        GlobalVars.recipeContainer.addRecipe(tmpRecipe);
     }
 
     private Unit convertUnit(String strUnit)
