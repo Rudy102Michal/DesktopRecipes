@@ -2,25 +2,47 @@ package pl.edu.pk.inf.java;
 
 import java.util.ArrayList;
 import java.util.List;
+import DataClasses.*;
+import DataClasses.DefaultTags;
+import DataClasses.DiffGrade;
 
 /**
  * Created by Michał on 2016-06-08.
  */
 public class Recipes_Desktop {
     public static void main(String[] args) {
-        ingredient in1 = new ingredient("Jajko", 2, Unit.AMOUNT);
-        ingredient in2 = new ingredient("Bekon", 20, Unit.DG);
-        List<DefaultTags> tt = new ArrayList<DefaultTags>();
-        tt.add(DefaultTags.ALCOHOL);
+        DataClasses.Ingredient in1 = new Ingredient("Jajko", 2, DataClasses.Unit.AMOUNT);
+        DataClasses.Ingredient in2 = new Ingredient("Bekon", 20, DataClasses.Unit.DG);
+        ArrayList<DataClasses.DefaultTags> tt = new ArrayList<>();
+        tt.add(DataClasses.DefaultTags.ALCOHOL);
+        tt.add(DataClasses.DefaultTags.ENGLISH);
 
-        List<ingredient>  rr = new ArrayList<ingredient>();
+        List<DataClasses.Ingredient>  rr = new ArrayList<>();
         rr.add(in1);
         rr.add(in2);
         rr.add(in2);
 
         int pp[] = {20, 25};
-        recipe tmp = new recipe(rr, "Jajecznica", pp, tt);
+        DataClasses.Recipe tmp = new DataClasses.Recipe(rr, "Jajecznica", pp, tt, "whatever", DiffGrade.BASIC);
+        RecipeContainer kont = RecipeContainer.GetInstance();
+        kont.addRecipe(tmp);
+        tmp = new DataClasses.Recipe(rr, "Jajecznica2", pp, tt, "whatever", DiffGrade.BASIC);
+        kont.addRecipe(tmp);
+        tmp = new DataClasses.Recipe(rr, "Jajecznica3", pp, tt, "whatever", DiffGrade.BASIC);
+        kont.addRecipe(tmp);
+        tmp = new DataClasses.Recipe(rr, "Jajecznica", pp, tt, "whatever", DiffGrade.BASIC);
+        kont.addRecipe(tmp);
+        //tt.remove(1);
 
-        tmp.testPrint();
+        Iterator iter = kont.getIterator();
+        while(iter.hasNext()){
+            iter.next().testPrint();
+            System.out.println();
+        }
+        ArrayList<Recipe> temp2 = new ArrayList();
+        temp2 = kont.findRecipe(tt,"Jajecznica");
+        System.out.println(temp2.size());
+        if (!temp2.isEmpty()) temp2.get(0).testPrint();
+        if (!temp2.isEmpty()) temp2.get(1).testPrint();
     }
 }
