@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DispRecipeController">
+   <children>
+      <AnchorPane prefHeight="404.0" prefWidth="600.0">
+         <children>
+            <Label fx:id="recipeNameLabel" layoutX="40.0" layoutY="43.0" text="Nazwa_przepisu">
+               <font>
+                  <Font name="Book Antiqua" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="recipePrepTimeLabel" layoutX="40.0" layoutY="84.0" text="Czas przygotowania: X-Y min." />
+            <Label fx:id="recipeIngredientsLabel" alignment="TOP_LEFT" layoutX="40.0" layoutY="136.0" prefHeight="234.0" prefWidth="237.0" text="Składniki:&#10;- ingredientA&#10;- ingredientB&#10;- ingredientC" wrapText="true">
+               <font>
+                  <Font name="Book Antiqua" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="recipeDiffGradeLabel" layoutX="40.0" layoutY="101.0" text="Poziom trudnośći: XYZ" />
+            <Label fx:id="recipeCommentLabel" alignment="TOP_LEFT" layoutX="300.0" layoutY="84.0" prefHeight="290.0" prefWidth="280.0" text="Opis&#10;Lorem ipsum facto. Lorem ipsum facto.&#10;Lorem ipsum facto. Lorem ipsum facto.&#10;Lorem ipsum facto. Lorem ipsum facto.&#10;Lorem ipsum facto. Lorem ipsum facto.&#10;Lorem ipsum facto. Lorem ipsum facto.&#10;Lorem ipsum facto. Lorem ipsum facto.&#10;Lorem ipsum facto. Lorem ipsum facto.&#10;" textAlignment="JUSTIFY" wrapText="true">
+               <font>
+                  <Font name="Book Antiqua" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

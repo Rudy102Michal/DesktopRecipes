@@ -13,6 +13,7 @@ public class Recipe {
     private int[] prepTime;
     public List<DefaultTags> recipeTags;
     private String recipeComment;
+    private DiffGrade recipeDifficulty;
 
 
     public Recipe() {
@@ -21,21 +22,30 @@ public class Recipe {
         this.recipeTags = new ArrayList<DefaultTags>();
     }
 
-    public Recipe(List<Ingredient> recipeIngredients, String recipeName, int[] prepTime, List<DefaultTags> recipeTags, String ingredientComment) {
+    public Recipe(List<Ingredient> recipeIngredients, String recipeName, int[] prepTime, List<DefaultTags> recipeTags, String ingredientComment, DiffGrade recipeDifficulty) {
         this.recipeIngredients = new ArrayList<Ingredient>(recipeIngredients);
         this.recipeName = recipeName;
         this.prepTime = new int[2];
         this.prepTime = prepTime;
         this.recipeTags = new ArrayList<DefaultTags>(recipeTags);
         this.recipeComment = ingredientComment;
+        this.recipeDifficulty = recipeDifficulty;
     }
 
     public void addIngredient(Ingredient newIngredient){
         recipeIngredients.add(newIngredient);
     }
 
-    public int[] getPrepTime() {
-        return prepTime;
+    public List<Ingredient> getRecipeIngredients() {
+        return recipeIngredients;
+    }
+
+    public String getRecipeComment() {
+        return recipeComment;
+    }
+
+    public int getPrepTime(int i) {
+        return prepTime[i];
     }
 
     public void setRecipeComment(String recipeComment) {
@@ -45,6 +55,14 @@ public class Recipe {
     public void setPrepTime(int prepTimeFrom, int prepTimeTo) {
         this.prepTime[0] = prepTimeFrom;
         this.prepTime[1] = prepTimeTo;
+    }
+
+    public void setRecipeDifficulty(DiffGrade recipeDifficulty) {
+        this.recipeDifficulty = recipeDifficulty;
+    }
+
+    public DiffGrade getRecipeDifficulty() {
+        return recipeDifficulty;
     }
 
     public void testPrint()

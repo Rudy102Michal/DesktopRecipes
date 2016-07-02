@@ -1,9 +1,6 @@
 package Controllers;
 
-import DataClasses.DefaultTags;
-import DataClasses.Recipe;
-import DataClasses.Unit;
-import DataClasses.Ingredient;
+import DataClasses.*;
 import DialogBoxes.AlertBox;
 import GlobalData.GlobalVars;
 
@@ -46,6 +43,9 @@ public class NewRecipeController implements Initializable {
     public CheckBox checkEnglish;
     public CheckBox checkPolish;
     public CheckBox checkAlcohol;
+
+    public ToggleGroup diffToggleGroup;
+    public RadioButton radioButtMedium;
 
     private ObservableList<ObservableIngredient> observableRecipeIngredients;
 
@@ -117,6 +117,16 @@ public class NewRecipeController implements Initializable {
             return;
         }
 
+        RadioButton tmpRadioButt = (RadioButton) diffToggleGroup.getSelectedToggle();
+        for(DiffGrade dg : DiffGrade.values())
+        {
+            if(tmpRadioButt.getText().equals(dg.toString()))
+            {
+                tmpRecipe.setRecipeDifficulty(dg);
+                break;
+            }
+        }
+
         try {
             if(observableRecipeIngredients.isEmpty())
                 throw new ExceptionNoIngredient();
@@ -155,7 +165,8 @@ public class NewRecipeController implements Initializable {
         }
 
         clearObjects();
-        tmpRecipe.testPrint();          //container function that takes recipe as argument here
+        tmpRecipe.testPrint();
+        displayRecipeToUser(tmpRecipe);          //container function that takes recipe as argument here
     }
 
     private Unit convertUnit(String strUnit)
@@ -176,6 +187,8 @@ public class NewRecipeController implements Initializable {
         prepTimeFrom.clear();
         prepTimeTo.clear();
         observableRecipeIngredients.clear();
+
+        diffToggleGroup.selectToggle(radioButtMedium);
 
         checkEuropean.setSelected(false);
         checkEnglish.setSelected(false);
@@ -223,6 +236,26 @@ public class NewRecipeController implements Initializable {
             Ingredient tmpIngredient = GlobalVars.tempIngredient;
             GlobalVars.dataAvailable = false;
             ingredientsTable.getItems().add(new ObservableIngredient(tmpIngredient));
+        }
+    }
+
+    public void displayRecipeToUser(Recipe recipeToDisp) {
+        try {
+            Stage stage = new Stage();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../displayRecipe.fxml"));
+
+            Parent window = loader.load();
+            DispRecipeController controller = loader.getController();
+            controller.setRecipeToShow(recipeToDisp);
+            controller.setLabels();
+
+            stage.setScene(new Scene(window));
+            stage.showAndWait();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
         }
     }
 
