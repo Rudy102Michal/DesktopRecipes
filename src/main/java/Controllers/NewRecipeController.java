@@ -165,7 +165,8 @@ public class NewRecipeController implements Initializable {
         }
 
         clearObjects();
-        tmpRecipe.testPrint();
+        tmpRecipe.testPrint();          //container function that takes recipe as argument here
+        GlobalVars.recipeContainer.addRecipe(tmpRecipe);
         displayRecipeToUser(tmpRecipe);          //container function that takes recipe as argument here
     }
 

@@ -4,21 +4,20 @@ package pl.edu.pk.inf.java;
  * Created by Operator on 2016-06-15.
  */
 
+import DataClasses.Recipe;
+
 /**
   ta klasa jest klasą kontenera. Będą w niej przechowywane wszystkie przepisy w trakcie trwania programu. Jest tutaj lista przepisów, iterator
  oraz metoda do dodawania przepisów do tej listy. Poglądowa pętla wykorzystywania iteratora jest teraz a minie.
  Po tej liście będziemy przechodzić szukając przepisów i robiąc wszystkie inne rzeczy. Udało mi sie wcisnąć dwa wzorce projektowe.
-
-
-
  **/
 public class RecipeContainer implements Container{
     static int count = 0;
-    private recipe[] RecipeList;
+    private Recipe [] RecipeList;
     private static RecipeContainer instance = new RecipeContainer();
 
     private RecipeContainer(){
-        RecipeList = new recipe[512];
+        RecipeList = new Recipe[512];
     }
 
     public static RecipeContainer GetInstance(){
@@ -28,7 +27,7 @@ public class RecipeContainer implements Container{
         return new RecipeIterator();
     }
 
-    public void addRecipe(recipe a){
+    public void addRecipe(Recipe a){
         RecipeList[count++] = a;
     }
 
@@ -44,7 +43,7 @@ public class RecipeContainer implements Container{
         }
 
 
-        public recipe next() {
+        public Recipe next() {
 
             if(this.hasNext()){
                 return RecipeList[index++];
@@ -52,7 +51,7 @@ public class RecipeContainer implements Container{
             return null;
         }
 
-        public recipe current(){
+        public Recipe current(){
             return RecipeList[index];
         }
     }
