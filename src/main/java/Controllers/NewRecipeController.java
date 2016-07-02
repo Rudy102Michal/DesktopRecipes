@@ -23,7 +23,7 @@ import java.util.*;
 /**
  * Created by Michał on 2016-06-15.
  */
-public class NewRecipeController implements Initializable {
+public class NewRecipeController extends MainController {
 
     public Button buttAddIngredientToRecipe;
     public Button buttAddNewRecipe;
@@ -57,6 +57,9 @@ public class NewRecipeController implements Initializable {
     public TableColumn<ObservableIngredient, String> tableColumnUnit;
 
     public void initialize(URL location, ResourceBundle resources) {
+
+        super.initialize(location, resources);
+
         tableColumnName.setCellValueFactory(new PropertyValueFactory<ObservableIngredient, String>("ingredientName"));
         tableColumnQuantity.setCellValueFactory(new PropertyValueFactory<ObservableIngredient, Double>("ingredientQuantity"));
         tableColumnUnit.setCellValueFactory(new PropertyValueFactory<ObservableIngredient, String>("ingredientUnit"));
