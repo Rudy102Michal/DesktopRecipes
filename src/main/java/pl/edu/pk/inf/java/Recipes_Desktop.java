@@ -39,10 +39,13 @@ public class Recipes_Desktop {
             iter.next().testPrint();
             System.out.println();
         }
+        //tt.clear();
         ArrayList<Recipe> temp2 = new ArrayList();
-        temp2 = kont.findRecipe(tt,"Jajecznica");
+        temp2 = kont.findRecipe(tt,"");
         System.out.println(temp2.size());
         if (!temp2.isEmpty()) temp2.get(0).testPrint();
         if (!temp2.isEmpty()) temp2.get(1).testPrint();
+        if (!temp2.isEmpty()) temp2.get(2).testPrint();
+        if (!temp2.isEmpty()) temp2.get(3).testPrint();
     }
 }

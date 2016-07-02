@@ -7,6 +7,7 @@ package pl.edu.pk.inf.java;
 import DataClasses.Recipe;
 import DataClasses.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
   ta klasa jest klasą kontenera. Będą w niej przechowywane wszystkie przepisy w trakcie trwania programu. Jest tutaj lista przepisów, iterator
@@ -37,6 +38,12 @@ public class RecipeContainer implements Container{
 
         int i;
         ArrayList<Recipe> localRecipeList = new ArrayList<>();
+        if(recipeName.isEmpty()){
+            for(i = 0; i < count; i++){
+                localRecipeList.add(RecipeList[i]);
+            }
+            return localRecipeList;
+        }
 
         for(i = 0; i < count;i++){
             if (RecipeList[i].recipeName.equals(recipeName)) localRecipeList.add(RecipeList[i]);
@@ -50,6 +57,12 @@ public class RecipeContainer implements Container{
         ArrayList<Recipe> localRecipeList = new ArrayList<>();
         int tagListSize;
         int j;
+        if(recipeTags.isEmpty()){
+            for(i = 0; i < count; i++){
+                localRecipeList.add(RecipeList[i]);
+            }
+            return localRecipeList;
+        }
 
         for(i = 0; i < count; i++){
             tagListSize = RecipeList[i].recipeTags.size();
@@ -68,6 +81,20 @@ public class RecipeContainer implements Container{
         ArrayList<Recipe> localRecipeListString;
         ArrayList<Recipe> localRecipeListTags;
         ArrayList<Recipe> localRecipeList = new ArrayList<>();
+
+        if((recipeName.isEmpty() && recipeName.isEmpty())){
+            for(int i = 0; i < count; i++){
+                localRecipeList.add(RecipeList[i]);
+            }
+            return localRecipeList;
+        }
+        if(recipeName.isEmpty()){
+            return findRecipe(recipeTags);
+        }
+        if(recipeTags.isEmpty()){
+            return findRecipe(recipeName);
+        }
+
         localRecipeListString = findRecipe(recipeName);
         localRecipeListTags = findRecipe(recipeTags);
 
