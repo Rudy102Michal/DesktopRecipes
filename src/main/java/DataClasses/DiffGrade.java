@@ -28,7 +28,7 @@ public enum DiffGrade {
                 ret = "Trudny";
                 break;
             case CHIEF_LIKE:
-                ret = "MasterChef";
+                ret = "Master Chef"; //O tutaj było MasterChef
                 break;
             default:
                 ret = "unknown";
