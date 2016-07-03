@@ -6,6 +6,8 @@ package pl.edu.pk.inf.java;
 
 import DataClasses.Recipe;
 import DataClasses.*;
+
+import javax.lang.model.type.NullType;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -35,6 +37,7 @@ public class RecipeContainer implements Container{
     }
 
     public void eraseRecipe(Recipe recipeToDelete){
+        //int tmpCount = count;
         for (int i = 0; i < count; i++){
             if (RecipeList[i].equals2(recipeToDelete)){
                 for (int j = i; j < count-1; j++){
@@ -43,7 +46,13 @@ public class RecipeContainer implements Container{
                 count--;
             }
         }
-
+    }
+    public ArrayList<Recipe> getList(){
+        ArrayList<Recipe> temporaryList = new ArrayList<>();
+        for (int i = 0; i < count; i++){
+            temporaryList.add(RecipeList[i]);
+        }
+        return temporaryList;
     }
 
     public ArrayList<Recipe> findRecipe(String recipeName){
