@@ -40,12 +40,12 @@ public class Recipes_Desktop {
             System.out.println();
         }
         //tt.clear();
-        ArrayList<Recipe> temp2 = new ArrayList();
+        /*ArrayList<Recipe> temp2 = new ArrayList();
         temp2 = kont.findRecipe(tt,"");
-        System.out.println(temp2.size());
-        if (!temp2.isEmpty()) temp2.get(0).testPrint();
-        if (!temp2.isEmpty()) temp2.get(1).testPrint();
-        if (!temp2.isEmpty()) temp2.get(2).testPrint();
-        if (!temp2.isEmpty()) temp2.get(3).testPrint();
+        System.out.println(temp2.size());*/
+        tmp = new DataClasses.Recipe(rr, "Jajecznica", pp, tt, "whatever", DiffGrade.BASIC);
+        kont.eraseRecipe(tmp);
+        iter = kont.getIterator();
+        while(iter.hasNext())iter.next().testPrint();
     }
 }

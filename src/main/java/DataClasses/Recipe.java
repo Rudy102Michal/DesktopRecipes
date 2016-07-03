@@ -82,4 +82,14 @@ public class Recipe {
         System.out.println(this.recipeComment);
 
     }
+
+    public boolean equals2(Recipe recipeToCompare){
+        if (this.recipeName.equals(recipeToCompare.recipeName) &&
+                (this.prepTime == recipeToCompare.prepTime) &&
+                (this.recipeTags.equals(recipeToCompare.recipeTags)) &&
+                (this.recipeComment.equals(recipeToCompare.recipeComment)) &&
+                (this.recipeDifficulty == recipeToCompare.recipeDifficulty) &&
+                (this.recipeIngredients.equals(recipeToCompare.recipeIngredients))) return true;
+        else return false;
+    }
 }

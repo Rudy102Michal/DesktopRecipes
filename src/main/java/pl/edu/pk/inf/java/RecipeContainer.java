@@ -34,6 +34,18 @@ public class RecipeContainer implements Container{
         RecipeList[count++] = a;
     }
 
+    public void eraseRecipe(Recipe recipeToDelete){
+        for (int i = 0; i < count; i++){
+            if (RecipeList[i].equals2(recipeToDelete)){
+                for (int j = i; j < count-1; j++){
+                    RecipeList[j] = RecipeList[j+1];
+                }
+                count--;
+            }
+        }
+
+    }
+
     public ArrayList<Recipe> findRecipe(String recipeName){
 
         int i;
