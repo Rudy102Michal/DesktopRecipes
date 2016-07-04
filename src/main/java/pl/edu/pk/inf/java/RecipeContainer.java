@@ -14,6 +14,7 @@ package pl.edu.pk.inf.java;
  **/
 public class RecipeContainer implements Container{
     static int count = 0;
+    int index = 0;
     private recipe[] RecipeList;
     private static RecipeContainer instance = new RecipeContainer();
 
@@ -34,7 +35,7 @@ public class RecipeContainer implements Container{
 
     private class RecipeIterator implements Iterator{
 
-        int index = 0;
+
 
         public boolean hasNext() {
             if(index < count){

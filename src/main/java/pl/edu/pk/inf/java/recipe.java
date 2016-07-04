@@ -11,7 +11,7 @@ import java.util.List;
  * Indicative preparation time for pl.edu.pk.inf.java.Recipe, prepTime, should always be 2 element array. Ex.: 15-20min
  */
 public class recipe {
-    private List<ingredient> recipeIngredients;
+    public List<ingredient> recipeIngredients;
     public String recipeName;
     private int[] prepTime;
     public List<DefaultTags> recipeTags;
@@ -27,6 +27,12 @@ public class recipe {
     public void addIngredient(ingredient newIngredient){
         recipeIngredients.add(newIngredient);
     }
+
+    public int[] getPrep()
+    {
+        return prepTime;
+    }
+
 
     public void testPrint()
     {
