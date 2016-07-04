@@ -56,7 +56,6 @@ public class DispRecipeController implements Initializable {
             Ingredient tmpIngr = it.next();
             tmpStr += "- " + tmpIngr.getIngredientName() + ", " + Double.toString(tmpIngr.getIngredientQuantity()) + " " + tmpIngr.getIngredientUnit().toString() + "\n";
         }
-        it.remove();
 
         recipeIngredientsLabel.setText(tmpStr);
         recipeCommentLabel.setText("Opis:\n" + recipeToShow.getRecipeComment());
