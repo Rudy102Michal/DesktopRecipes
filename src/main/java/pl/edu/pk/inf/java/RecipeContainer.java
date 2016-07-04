@@ -85,10 +85,11 @@ public class RecipeContainer implements Container{
             return localRecipeList;
         }
 
+        tagListSize = recipeTags.size();
+
         for(i = 0; i < count; i++){
-            tagListSize = RecipeList[i].recipeTags.size();
             for (j = 0; j < tagListSize; j++){
-                if (recipeTags.contains(RecipeList[i].recipeTags.get(j)))
+                if (RecipeList[i].recipeTags.contains(recipeTags.get(j)))
                     if (j == tagListSize-1) localRecipeList.add(RecipeList[i]);
                     else;
                 else break;
