@@ -170,7 +170,7 @@ public class NewRecipeController extends MainController {
         clearObjects();
         tmpRecipe.testPrint();          //container function that takes recipe as argument here
         GlobalVars.recipeContainer.addRecipe(tmpRecipe);
-        displayRecipeToUser(tmpRecipe);          //container function that takes recipe as argument here
+        //displayRecipeToUser(tmpRecipe);          //container function that takes recipe as argument here
     }
 
     private Unit convertUnit(String strUnit)

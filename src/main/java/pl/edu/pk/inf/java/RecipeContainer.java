@@ -121,9 +121,9 @@ public class RecipeContainer implements Container{
 
         int stringListLength = localRecipeListString.size();
 
-        for (int i = 0; i < stringListLength; i++){
-            if (localRecipeListTags.contains(localRecipeListString.get(i)))
-                localRecipeList.add(localRecipeListString.get(i));
+        for (Recipe rcp : localRecipeListString){
+            if (localRecipeListTags.contains(rcp))
+                localRecipeList.add(rcp);
         }
         return localRecipeList;
     }
