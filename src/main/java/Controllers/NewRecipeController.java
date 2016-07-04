@@ -170,7 +170,7 @@ public class NewRecipeController extends MainController {
         clearObjects();
         tmpRecipe.testPrint();          //container function that takes recipe as argument here
         GlobalVars.recipeContainer.addRecipe(tmpRecipe);
-        //displayRecipeToUser(tmpRecipe);          //container function that takes recipe as argument here
+        displayRecipeToUser(tmpRecipe);          //container function that takes recipe as argument here
     }
 
     private Unit convertUnit(String strUnit)
@@ -243,25 +243,6 @@ public class NewRecipeController extends MainController {
         }
     }
 
-    public void displayRecipeToUser(Recipe recipeToDisp) {
-        try {
-            Stage stage = new Stage();
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../displayRecipe.fxml"));
-
-            Parent window = loader.load();
-            DispRecipeController controller = loader.getController();
-            controller.setRecipeToShow(recipeToDisp);
-            controller.setLabels();
-
-            stage.setScene(new Scene(window));
-            stage.showAndWait();
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-    }
 
     public class ObservableIngredient {
         private String ingredientName;

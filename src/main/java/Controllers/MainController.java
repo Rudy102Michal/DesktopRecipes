@@ -1,11 +1,16 @@
 package Controllers;
 
+import DataClasses.Recipe;
 import GlobalData.GlobalVars;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -53,5 +58,25 @@ public abstract class MainController implements Initializable {
         System.out.print("B");
         buttRecipesBrowsing.setSelected(true);
         GlobalVars.mainStage.setScene(GlobalVars.rBrowseScene);
+    }
+
+    public void displayRecipeToUser(Recipe recipeToDisp) {
+        try {
+            Stage stage = new Stage();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../displayRecipe.fxml"));
+
+            Parent window = loader.load();
+            DispRecipeController controller = loader.getController();
+            controller.setRecipeToShow(recipeToDisp);
+            controller.setLabels();
+
+            stage.setScene(new Scene(window));
+            stage.showAndWait();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 }

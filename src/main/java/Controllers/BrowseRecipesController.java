@@ -108,6 +108,13 @@ public class BrowseRecipesController extends MainController {
 
     public void displaySelectedRecipe() {
 
+        ObservableList<ObservableRecipe> recipesSelected;
+        recipesSelected = recipesTable.getSelectionModel().getSelectedItems();
+
+        for(ObservableRecipe rcp : recipesSelected)
+        {
+            displayRecipeToUser(rcp.getObservedRecipe());
+        }
     }
 
     public void modifySelectedRecipe() {
