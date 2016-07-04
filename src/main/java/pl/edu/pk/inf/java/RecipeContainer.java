@@ -67,7 +67,7 @@ public class RecipeContainer implements Container{
         }
 
         for(i = 0; i < count;i++){
-            if (RecipeList[i].recipeName.equals(recipeName)) localRecipeList.add(RecipeList[i]);
+            if (RecipeList[i].recipeName.contains(recipeName)) localRecipeList.add(RecipeList[i]);
         }
         return localRecipeList;
     }
@@ -103,7 +103,7 @@ public class RecipeContainer implements Container{
         ArrayList<Recipe> localRecipeListTags;
         ArrayList<Recipe> localRecipeList = new ArrayList<>();
 
-        if((recipeName.isEmpty() && recipeName.isEmpty())){
+        if((recipeName.isEmpty() && recipeTags.isEmpty())){
             for(int i = 0; i < count; i++){
                 localRecipeList.add(RecipeList[i]);
             }

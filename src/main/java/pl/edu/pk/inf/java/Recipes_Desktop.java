@@ -32,7 +32,7 @@ public class Recipes_Desktop {
         kont.addRecipe(tmp);
         tmp = new DataClasses.Recipe(rr, "Jajecznica", pp, tt, "whatever", DiffGrade.BASIC);
         kont.addRecipe(tmp);
-        //tt.remove(1);
+        tt.remove(1);
 
         Iterator iter = kont.getIterator();
         while(iter.hasNext()){
@@ -41,16 +41,11 @@ public class Recipes_Desktop {
         }
         //tt.clear();
         ArrayList<Recipe> temp2 = new ArrayList();
-        /*temp2 = kont.findRecipe(tt,"");
-        System.out.println(temp2.size());*/
+        temp2 = kont.findRecipe("Jaje");
+        System.out.println(temp2.size());
         tmp = new DataClasses.Recipe(rr, "Jajecznica", pp, tt, "whatever", DiffGrade.BASIC);
         kont.eraseRecipe(tmp);
         iter = kont.getIterator();
         while(iter.hasNext())iter.next().testPrint();
-        temp2 = kont.getList();
-        System.out.println(temp2.size());
-        tt.clear();
-        temp2 = kont.findRecipe(tt,"");
-        System.out.println(temp2.size());
     }
 }
