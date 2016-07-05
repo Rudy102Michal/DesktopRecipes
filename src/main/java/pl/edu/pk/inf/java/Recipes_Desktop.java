@@ -31,6 +31,7 @@ public class Recipes_Desktop {
         kont.addRecipe(tmp);
         tmp = new pl.edu.pk.inf.java.DataClasses.Recipe(rr, "Jajecznica", pp, tt, "whatever", DiffGrade.BASIC);
         kont.addRecipe(tmp);
+        tmp = new pl.edu.pk.inf.java.DataClasses.Recipe(rr, "Jajecznica3", pp, tt, "whatever", DiffGrade.BASIC);
         //tt.remove(1);
 
         Iterator iter = kont.getIterator();
@@ -39,11 +40,9 @@ public class Recipes_Desktop {
             System.out.println();
         }
         //tt.clear();
+        Recipe tmp2 = new pl.edu.pk.inf.java.DataClasses.Recipe(rr, "Jajecznica", pp, tt, "whatever", DiffGrade.BASIC);
         ArrayList<Recipe> temp2 = new ArrayList();
-        temp2 = kont.findRecipe(tt);
-        System.out.println(temp2.size());
-        tmp = new pl.edu.pk.inf.java.DataClasses.Recipe(rr, "Jajecznica", pp, tt, "whatever", DiffGrade.BASIC);
-        kont.eraseRecipe(tmp);
+        kont.change(tmp,tmp2);
         iter = kont.getIterator();
         while(iter.hasNext())iter.next().testPrint();
     }
