@@ -5,6 +5,7 @@ import java.util.Iterator;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import pl.edu.pk.inf.java.DataClasses.DefaultTags;
+import pl.edu.pk.inf.java.DataClasses.DiffGrade;
 import pl.edu.pk.inf.java.DataClasses.Ingredient;
 import pl.edu.pk.inf.java.DataClasses.Recipe;
 import pl.edu.pk.inf.java.GlobalData.GlobalVars;
@@ -51,7 +52,7 @@ public class SaveFileCommand implements Command {
                 }
                 tmp.put("Tags",temp_array_tags);
                 tmp.put("Comment",el.getRecipeComment());
-                tmp.put("Dificulty",String.valueOf(el.getRecipeDifficulty()));
+                tmp.put("Difficulty",el.getRecipeDifficulty().name());
 
                 arr.add(tmp);
 
