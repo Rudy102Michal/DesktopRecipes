@@ -15,6 +15,7 @@ import java.util.ArrayList;
  **/
 public class RecipeContainer implements Container{
     private static int count = 0;
+    int index = 0;
     private Recipe [] RecipeList;
     private static RecipeContainer instance = new RecipeContainer();
 
@@ -134,7 +135,7 @@ public class RecipeContainer implements Container{
 
     private class RecipeIterator implements Iterator{
 
-        int index = 0;
+
 
         public boolean hasNext() {
             if(index < count){
