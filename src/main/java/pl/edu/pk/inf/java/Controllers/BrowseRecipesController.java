@@ -2,6 +2,7 @@ package pl.edu.pk.inf.java.Controllers;
 
 import pl.edu.pk.inf.java.DataClasses.DefaultTags;
 import pl.edu.pk.inf.java.DataClasses.Recipe;
+import pl.edu.pk.inf.java.DialogBoxes.DecisionBox;
 import pl.edu.pk.inf.java.GlobalData.GlobalVars;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -128,11 +129,16 @@ public class BrowseRecipesController extends MainController {
 
     public void removeSelectedRecipe() {
 
-        for(ObservableRecipe rcp : getSelectedRecipe())
-        {
-            GlobalVars.recipeContainer.eraseRecipe(rcp.getObservedRecipe());
+        if(!getSelectedRecipe().isEmpty()) {
+            DecisionBox mess = new DecisionBox("Czy na pewno chcesz usunąć ten przepis z bazy?", "Usuwanie przepisu");
+            mess.displayMessage();
+            if (mess.isDecision()) {
+                for (ObservableRecipe rcp : getSelectedRecipe()) {
+                    GlobalVars.recipeContainer.eraseRecipe(rcp.getObservedRecipe());
+                }
+                actionOnPropertyChanged();
+            }
         }
-        actionOnPropertyChanged();
     }
 
     private void loadToTableRecipeList(ArrayList<Recipe> recipeArrayList) {
