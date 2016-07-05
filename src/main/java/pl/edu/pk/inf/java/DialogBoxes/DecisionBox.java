@@ -1,4 +1,4 @@
-package DialogBoxes;
+package pl.edu.pk.inf.java.DialogBoxes;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;

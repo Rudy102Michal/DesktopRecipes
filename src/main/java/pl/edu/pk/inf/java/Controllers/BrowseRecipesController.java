@@ -1,13 +1,10 @@
-package Controllers;
+package pl.edu.pk.inf.java.Controllers;
 
-import DataClasses.DefaultTags;
-import DataClasses.Recipe;
-import GlobalData.GlobalVars;
-import javafx.beans.Observable;
+import pl.edu.pk.inf.java.DataClasses.DefaultTags;
+import pl.edu.pk.inf.java.DataClasses.Recipe;
+import pl.edu.pk.inf.java.GlobalData.GlobalVars;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 

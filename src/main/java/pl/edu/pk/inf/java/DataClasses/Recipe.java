@@ -1,4 +1,4 @@
-package DataClasses;
+package pl.edu.pk.inf.java.DataClasses;
 
 import java.util.ArrayList;
 import java.util.Iterator;

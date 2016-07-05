@@ -1,8 +1,8 @@
-package GlobalData;
+package pl.edu.pk.inf.java.GlobalData;
 
-import Controllers.BrowseRecipesController;
-import Controllers.NewRecipeController;
-import DataClasses.Ingredient;
+import pl.edu.pk.inf.java.Controllers.BrowseRecipesController;
+import pl.edu.pk.inf.java.Controllers.NewRecipeController;
+import pl.edu.pk.inf.java.DataClasses.Ingredient;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import pl.edu.pk.inf.java.RecipeContainer;

@@ -1,15 +1,15 @@
-package Controllers;
+package pl.edu.pk.inf.java.Controllers;
 
-import DataClasses.Unit;
-import DataClasses.Ingredient;
-import DialogBoxes.AlertBox;
-import DialogBoxes.DecisionBox;
+import pl.edu.pk.inf.java.DataClasses.Unit;
+import pl.edu.pk.inf.java.DataClasses.Ingredient;
+import pl.edu.pk.inf.java.DialogBoxes.AlertBox;
+import pl.edu.pk.inf.java.DialogBoxes.DecisionBox;
 import javafx.fxml.Initializable;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import GlobalData.GlobalVars;
+import pl.edu.pk.inf.java.GlobalData.GlobalVars;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;

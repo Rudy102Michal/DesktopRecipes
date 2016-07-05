@@ -4,12 +4,9 @@ package pl.edu.pk.inf.java;
  * Created by Operator on 2016-06-15.
  */
 
-import DataClasses.Recipe;
-import DataClasses.*;
+import pl.edu.pk.inf.java.DataClasses.Recipe;
 
-import javax.lang.model.type.NullType;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
   ta klasa jest klasą kontenera. Będą w niej przechowywane wszystkie przepisy w trakcie trwania programu. Jest tutaj lista przepisów, iterator
@@ -72,7 +69,7 @@ public class RecipeContainer implements Container{
         return localRecipeList;
     }
 
-    public ArrayList<Recipe> findRecipe(ArrayList<DataClasses.DefaultTags> recipeTags){
+    public ArrayList<Recipe> findRecipe(ArrayList<pl.edu.pk.inf.java.DataClasses.DefaultTags> recipeTags){
 
         int i;
         ArrayList<Recipe> localRecipeList = new ArrayList<>();
@@ -98,7 +95,7 @@ public class RecipeContainer implements Container{
         return localRecipeList;
     }
 
-    public ArrayList<Recipe> findRecipe(ArrayList<DataClasses.DefaultTags> recipeTags, String recipeName){
+    public ArrayList<Recipe> findRecipe(ArrayList<pl.edu.pk.inf.java.DataClasses.DefaultTags> recipeTags, String recipeName){
 
         ArrayList<Recipe> localRecipeListString;
         ArrayList<Recipe> localRecipeListTags;

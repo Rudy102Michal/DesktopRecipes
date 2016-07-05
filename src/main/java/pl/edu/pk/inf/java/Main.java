@@ -1,11 +1,11 @@
-import Controllers.BrowseRecipesController;
-import Controllers.NewIngredientController;
-import Controllers.NewRecipeController;
-import GlobalData.GlobalVars;
+package pl.edu.pk.inf.java;
+
+import pl.edu.pk.inf.java.Controllers.BrowseRecipesController;
+import pl.edu.pk.inf.java.Controllers.NewRecipeController;
+import pl.edu.pk.inf.java.GlobalData.GlobalVars;
 import javafx.application.Application;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -15,8 +15,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         FXMLLoader rAddLoader, rBrowseLoader;
-        rAddLoader = new FXMLLoader(getClass().getResource("newRecipe.fxml"));
-        rBrowseLoader = new FXMLLoader(getClass().getResource("browseRecipes.fxml"));
+        rAddLoader = new FXMLLoader(getClass().getResource("/newRecipe.fxml"));
+        rBrowseLoader = new FXMLLoader(getClass().getResource("/browseRecipes.fxml"));
 
         GlobalVars.newRecipeController = new NewRecipeController();
         GlobalVars.browseRecipesController = new BrowseRecipesController();

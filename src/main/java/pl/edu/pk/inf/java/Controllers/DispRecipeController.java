@@ -1,7 +1,7 @@
-package Controllers;
+package pl.edu.pk.inf.java.Controllers;
 
-import DataClasses.Ingredient;
-import DataClasses.Recipe;
+import pl.edu.pk.inf.java.DataClasses.Ingredient;
+import pl.edu.pk.inf.java.DataClasses.Recipe;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 

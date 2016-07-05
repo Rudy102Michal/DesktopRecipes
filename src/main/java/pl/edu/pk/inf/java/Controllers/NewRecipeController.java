@@ -1,16 +1,15 @@
-package Controllers;
+package pl.edu.pk.inf.java.Controllers;
 
-import DataClasses.*;
-import DialogBoxes.AlertBox;
-import GlobalData.GlobalVars;
+import pl.edu.pk.inf.java.DataClasses.*;
+import pl.edu.pk.inf.java.DialogBoxes.AlertBox;
+import pl.edu.pk.inf.java.GlobalData.GlobalVars;
 
-import LocalExceptions.ExceptionNoIngredient;
-import LocalExceptions.ExceptionNoIntegerInput;
-import LocalExceptions.ExceptionNoTextInput;
+import pl.edu.pk.inf.java.LocalExceptions.ExceptionNoIngredient;
+import pl.edu.pk.inf.java.LocalExceptions.ExceptionNoIntegerInput;
+import pl.edu.pk.inf.java.LocalExceptions.ExceptionNoTextInput;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -219,7 +218,7 @@ public class NewRecipeController extends MainController {
     public void getIngredientFromUser(){
         Stage stage = new Stage();
         try {
-            FXMLLoader n1 = new FXMLLoader(getClass().getResource("../newIngredient.fxml"));
+            FXMLLoader n1 = new FXMLLoader(getClass().getResource("/newIngredient.fxml"));
             Parent newWindow = n1.load();
             NewIngredientController tmpController = n1.getController();
             stage.setTitle("Dodaj nowy składnik");

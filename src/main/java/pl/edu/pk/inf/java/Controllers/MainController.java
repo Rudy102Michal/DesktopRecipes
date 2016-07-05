@@ -1,8 +1,7 @@
-package Controllers;
+package pl.edu.pk.inf.java.Controllers;
 
-import DataClasses.Recipe;
-import GlobalData.GlobalVars;
-import javafx.event.EventHandler;
+import pl.edu.pk.inf.java.DataClasses.Recipe;
+import pl.edu.pk.inf.java.GlobalData.GlobalVars;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -64,7 +63,7 @@ public abstract class MainController implements Initializable {
         try {
             Stage stage = new Stage();
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../displayRecipe.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/displayRecipe.fxml"));
 
             Parent window = loader.load();
             DispRecipeController controller = loader.getController();

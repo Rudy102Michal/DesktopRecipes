@@ -1,4 +1,4 @@
-package DataClasses;
+package pl.edu.pk.inf.java.DataClasses;
 
 /**
  * Created by Michał on 2016-06-15.
