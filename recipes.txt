@@ -1,1 +1,1 @@
-{"Recipe List":[{"Comment":"mniam mniam","Prep time":"14","Ingredients":[{"Ingredient":"Jajko","Quantity":"2.0","Unit":"AMOUNT"},{"Ingredient":"Cebula","Quantity":"1.0","Unit":"AMOUNT"}],"Difficulty":"EASY","Prep time2":"20","Tags":["EUROPEAN","POLISH"],"Name":"jajecznica"}]}
+{"Recipe List":[{"Comment":"mniam mniam","Prep time":"14","Difficulty":"EASY","Ingredients":[{"Ingredient":"Jajko","Quantity":"2.0","Unit":"sztuk"},{"Ingredient":"Cebula","Quantity":"1.0","Unit":"sztuk"}],"Prep time2":"20","Tags":["EUROPEAN","POLISH"],"Name":"jajecznica"}]}
