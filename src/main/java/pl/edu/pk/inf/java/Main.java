@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    final GlobalVars appGlobalVars= new GlobalVars();
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -27,13 +28,11 @@ public class Main extends Application {
         GlobalVars.rAddScene = new Scene(rAddLoader.load());
         GlobalVars.rBrowseScene = new Scene(rBrowseLoader.load());
 
-        //GlobalVars.newRecipeController.buttRecipesBrowsing.selectedProperty().bind(GlobalVars.browseRecipesController.buttRecipesBrowsing.selectedProperty());
-        //GlobalVars.newRecipeController.buttRecipeAdding.selectedProperty().bind(GlobalVars.browseRecipesController.buttRecipeAdding.selectedProperty());
-
         Bindings.bindBidirectional(GlobalVars.newRecipeController.buttRecipeAdding.selectedProperty(), GlobalVars.browseRecipesController.buttRecipeAdding.selectedProperty());
         Bindings.bindBidirectional(GlobalVars.newRecipeController.buttRecipesBrowsing.selectedProperty(), GlobalVars.browseRecipesController.buttRecipesBrowsing.selectedProperty());
 
         primaryStage.setTitle("Menager przepisów 42");
+        primaryStage.setResizable(false);
         primaryStage.setScene(GlobalVars.rAddScene);
         GlobalVars.mainStage = primaryStage;
         GlobalVars.mainStage.show();
@@ -42,7 +41,6 @@ public class Main extends Application {
 
     public static void main(String[] args) {
 
-        final GlobalVars appGlobalVars = new GlobalVars();
         launch(args);
     }
 }

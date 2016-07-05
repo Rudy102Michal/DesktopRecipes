@@ -110,6 +110,8 @@ public class NewRecipeController extends MainController {
                     mess.displayMessage();
                     return;
                 }
+
+              //  if(tmp)
             }
         }
         catch(ExceptionNoIntegerInput e)

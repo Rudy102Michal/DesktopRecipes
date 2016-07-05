@@ -29,6 +29,9 @@
       <children>
             <Button fx:id="buttAddNewRecipe" layoutX="15.0" layoutY="337.0" mnemonicParsing="false" onAction="#addNewRecipe" prefHeight="25.0" prefWidth="611.0" text="Dodaj przepis" />
             <TableView fx:id="ingredientsTable" layoutX="15.0" layoutY="178.0" prefHeight="121.0" prefWidth="388.0">
+                <placeholder>
+                    <Label text="Brak składników do wyświetlenia" />
+                </placeholder>
               <columns>
                 <TableColumn fx:id="tableColumnName" minWidth="0.0" prefWidth="208.0" text="Nazwa składnika" />
                 <TableColumn fx:id="tableColumnQuantity" prefWidth="93.0" text="Ilość" />

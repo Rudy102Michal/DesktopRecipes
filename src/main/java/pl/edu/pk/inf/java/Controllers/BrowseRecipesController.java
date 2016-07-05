@@ -94,21 +94,29 @@ public class BrowseRecipesController extends MainController {
         });
 
         checkAlcohol.selectedProperty().addListener( (v, oldValue, newValue) -> {
-            System.out.println(v.toString() + " " + newValue.toString());
             actionOnPropertyChanged();
         });
 
         recipeName.textProperty().addListener( (v, oldValue, newValue) -> {
             actionOnPropertyChanged();
         });
+
+        buttRecipesBrowsing.selectedProperty().addListener( (v, oldValue, newValue) -> {
+            if(!oldValue && newValue)
+                actionOnPropertyChanged();
+        });
+    }
+
+    public ObservableList<ObservableRecipe> getSelectedRecipe() {
+        ObservableList<ObservableRecipe> recipesSelected;
+        recipesSelected = recipesTable.getSelectionModel().getSelectedItems();
+
+        return recipesSelected;
     }
 
     public void displaySelectedRecipe() {
 
-        ObservableList<ObservableRecipe> recipesSelected;
-        recipesSelected = recipesTable.getSelectionModel().getSelectedItems();
-
-        for(ObservableRecipe rcp : recipesSelected)
+        for(ObservableRecipe rcp : getSelectedRecipe())
         {
             displayRecipeToUser(rcp.getObservedRecipe());
         }
@@ -120,6 +128,11 @@ public class BrowseRecipesController extends MainController {
 
     public void removeSelectedRecipe() {
 
+        for(ObservableRecipe rcp : getSelectedRecipe())
+        {
+            GlobalVars.recipeContainer.eraseRecipe(rcp.getObservedRecipe());
+        }
+        actionOnPropertyChanged();
     }
 
     private void loadToTableRecipeList(ArrayList<Recipe> recipeArrayList) {
