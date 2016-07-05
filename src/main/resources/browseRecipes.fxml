@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+  <children>
+      <HBox alignment="CENTER">
+         <children>
+            <ToggleButton fx:id="buttRecipeAdding" mnemonicParsing="false" selected="true" text="Dodawanie przepisu">
+               <toggleGroup>
+                  <ToggleGroup fx:id="menuToggleGroup" />
+               </toggleGroup></ToggleButton>
+            <ToggleButton fx:id="buttRecipesBrowsing" mnemonicParsing="false" text="Przeglądanie przepisów" toggleGroup="$menuToggleGroup" />
+         </children>
+         <opaqueInsets>
+            <Insets bottom="10.0" top="10.0" />
+         </opaqueInsets>
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </VBox.margin>
+      </HBox>
+    <AnchorPane maxHeight="-Infinity" maxWidth="-1.0" minHeight="-Infinity" prefHeight="376.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Label layoutX="14.0" layoutY="47.0" text="Tagi:" />
+            <TableView fx:id="recipesTable" layoutX="14.0" layoutY="96.0" prefHeight="266.0" prefWidth="472.0">
+                <placeholder>
+                    <Label text="Brak przepisów do wyświetlenia"/>
+                </placeholder>
+              <columns>
+                <TableColumn fx:id="tableColumnName" prefWidth="187.0" text="Nazwa przepisu" />
+                <TableColumn fx:id="tableColumnDifficulty" prefWidth="152.0" text="Trudność przygotowania" />
+                  <TableColumn fx:id="tableColumnMinTime" minWidth="0.0" prefWidth="66.0" text="min. czas" />
+                  <TableColumn fx:id="tableColumnMaxTime" prefWidth="66.0" text="max. czas" />
+              </columns>
+            </TableView>
+            <TextField fx:id="recipeName" layoutX="114.0" layoutY="14.0" prefHeight="25.0" prefWidth="233.0" promptText="Nazwa przepisu" />
+            <CheckBox fx:id="checkVegan" layoutX="52.0" layoutY="47.0" mnemonicParsing="false" text="Wegańskie" />
+            <CheckBox fx:id="checkVegetarian" layoutX="144.0" layoutY="47.0" mnemonicParsing="false" text="Wegetariańskie" />
+            <CheckBox fx:id="checkMediterrean" layoutX="257.0" layoutY="47.0" mnemonicParsing="false" text="Śródziemnomorskie" />
+            <CheckBox fx:id="checkOriental" layoutX="399.0" layoutY="47.0" mnemonicParsing="false" text="Orientalne" />
+            <CheckBox fx:id="checkEuropean" layoutX="491.0" layoutY="47.0" mnemonicParsing="false" text="Europejskie" />
+            <CheckBox fx:id="checkItalian" layoutX="52.0" layoutY="71.0" mnemonicParsing="false" text="Włoskie" />
+            <CheckBox fx:id="checkFrench" layoutX="131.0" layoutY="71.0" mnemonicParsing="false" text="Francuskie" />
+            <CheckBox fx:id="checkEnglish" layoutX="220.0" layoutY="71.0" mnemonicParsing="false" text="Angielskie" />
+            <CheckBox fx:id="checkPolish" layoutX="304.0" layoutY="71.0" mnemonicParsing="false" text="Polskie" />
+            <CheckBox fx:id="checkAlcohol" layoutX="371.0" layoutY="71.0" mnemonicParsing="false" text="Zawiera alkohol" />
+            <Label layoutX="14.0" layoutY="18.0" text="Wyszukaj przepis:" />
+            <Button fx:id="buttDisplayRecipe" layoutX="491.0" layoutY="96.0" mnemonicParsing="false" onAction="#displaySelectedRecipe" prefHeight="65.0" prefWidth="141.0" text="Wyświetl przepis">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttModifyRecipe" layoutX="491.0" layoutY="197.0" mnemonicParsing="false" onAction="#modifySelectedRecipe" prefHeight="65.0" prefWidth="141.0" text="Modyfikuj przepis" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttRemoveRecipe" layoutX="491.0" layoutY="297.0" mnemonicParsing="false" onAction="#removeSelectedRecipe" prefHeight="65.0" prefWidth="141.0" text="Usuń przepis">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+         </children></AnchorPane>
+  </children>
+</VBox>
