@@ -1,7 +1,7 @@
 package pl.edu.pk.inf.java;
 
 
-import DataClasses.Recipe;
+import pl.edu.pk.inf.java.DataClasses.Recipe;
 /**
  * Created by Operator on 2016-06-15.
  */
