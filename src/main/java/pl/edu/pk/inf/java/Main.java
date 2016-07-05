@@ -31,6 +31,14 @@ public class Main extends Application {
         Bindings.bindBidirectional(GlobalVars.newRecipeController.buttRecipeAdding.selectedProperty(), GlobalVars.browseRecipesController.buttRecipeAdding.selectedProperty());
         Bindings.bindBidirectional(GlobalVars.newRecipeController.buttRecipesBrowsing.selectedProperty(), GlobalVars.browseRecipesController.buttRecipesBrowsing.selectedProperty());
 
+        ReadFileCommand read = new ReadFileCommand();
+        FileCommand file = new FileCommand();//wykonywacz komend
+        file.setMode(read); // ustawiamy wykonywacz komend w tryb zapisu
+        file.execute(); // wykonywacz komend wykonuje zapis
+
+        SaveFileCommand save = new SaveFileCommand();
+        file.setMode(save);
+        file.execute();
         primaryStage.setTitle("Menager przepisów 42");
         primaryStage.setResizable(false);
         primaryStage.setScene(GlobalVars.rAddScene);

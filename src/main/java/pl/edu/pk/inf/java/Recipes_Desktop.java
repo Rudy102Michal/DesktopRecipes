@@ -2,8 +2,11 @@ package pl.edu.pk.inf.java;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import jdk.nashorn.internal.objects.Global;
 import pl.edu.pk.inf.java.DataClasses.*;
 import pl.edu.pk.inf.java.DataClasses.DiffGrade;
+import pl.edu.pk.inf.java.GlobalData.GlobalVars;
 
 /**
  * Created by Michał on 2016-06-08.
@@ -46,5 +49,9 @@ public class Recipes_Desktop {
         kont.eraseRecipe(tmp);
         iter = kont.getIterator();
         while(iter.hasNext())iter.next().testPrint();
+
+
+
+
     }
 }
