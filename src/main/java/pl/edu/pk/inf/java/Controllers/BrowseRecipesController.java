@@ -1,5 +1,9 @@
 package pl.edu.pk.inf.java.Controllers;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import pl.edu.pk.inf.java.DataClasses.DefaultTags;
 import pl.edu.pk.inf.java.DataClasses.Recipe;
 import pl.edu.pk.inf.java.DialogBoxes.DecisionBox;
@@ -42,6 +46,8 @@ public class BrowseRecipesController extends MainController {
     public TableColumn<ObservableRecipe, String> tableColumnDifficulty;
     public TableColumn<ObservableRecipe, Integer> tableColumnMinTime;
     public TableColumn<ObservableRecipe, Integer> tableColumnMaxTime;
+
+    private Recipe modifiedRecipe;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -125,6 +131,38 @@ public class BrowseRecipesController extends MainController {
 
     public void modifySelectedRecipe() {
 
+        if(!getSelectedRecipe().isEmpty()) {
+            for(ObservableRecipe rcp : getSelectedRecipe()) {
+
+                try {
+                    Stage stage = new Stage();
+
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/modifyRecipe.fxml"));
+
+                    Parent window = loader.load();
+                    ModifyRecipeController controller = loader.getController();
+                    controller.setRecipeToModify(rcp.getObservedRecipe());
+                    controller.setObjectsValues();
+                    controller.setParentController(this);
+
+                    stage.setScene(new Scene(window));
+                    stage.showAndWait();
+
+                    GlobalVars.recipeContainer.eraseRecipe(rcp.getObservedRecipe());
+                    GlobalVars.recipeContainer.addRecipe(modifiedRecipe);
+
+                    actionOnPropertyChanged();
+                }
+                catch(Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public void setModifiedRecipe(Recipe modifiedRecipe) {
+        this.modifiedRecipe = modifiedRecipe;
     }
 
     public void removeSelectedRecipe() {

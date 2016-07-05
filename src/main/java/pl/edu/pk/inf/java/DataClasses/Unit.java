@@ -54,4 +54,15 @@ public enum Unit {
         }
         return ret;
     }
+
+    public Unit convertUnit(String strUnit)
+    {
+        for(Unit u : Unit.values())
+        {
+            if(strUnit.equals(u.toString()))
+                return u;
+        }
+
+        return Unit.UNKN;
+    }
 }
