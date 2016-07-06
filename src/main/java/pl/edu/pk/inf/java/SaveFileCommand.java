@@ -38,7 +38,7 @@ public class SaveFileCommand implements Command {
                     JSONObject temp_ingredients  = new JSONObject();
                     temp_ingredients.put("Ingredient",temp_ing.ingredientName);
                     temp_ingredients.put("Quantity",String.valueOf(temp_ing.getIngredientQuantity()));
-                    temp_ingredients.put("Unit",String.valueOf(temp_ing.getIngredientUnit()).toUpperCase());
+                    temp_ingredients.put("Unit",String.valueOf(temp_ing.getIngredientUnit().name()));
                     temp_array_ingredient.add(temp_ingredients);
                 }
                 tmp.put("Ingredients",temp_array_ingredient); //dodawanie skladnikow
