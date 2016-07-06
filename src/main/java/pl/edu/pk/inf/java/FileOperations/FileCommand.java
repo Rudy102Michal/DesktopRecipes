@@ -1,4 +1,6 @@
-package pl.edu.pk.inf.java;
+package pl.edu.pk.inf.java.FileOperations;
+
+import pl.edu.pk.inf.java.FileOperations.Command;
 
 /**
  * Created by Berrion on 2016-07-05.

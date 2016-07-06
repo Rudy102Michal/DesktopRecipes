@@ -1,4 +1,4 @@
-package pl.edu.pk.inf.java;
+package pl.edu.pk.inf.java.MainContainer;
 
 /**
  * Created by Operator on 2016-06-15.
@@ -13,7 +13,7 @@ import java.util.ArrayList;
  oraz metoda do dodawania przepisów do tej listy. Poglądowa pętla wykorzystywania iteratora jest teraz a minie.
  Po tej liście będziemy przechodzić szukając przepisów i robiąc wszystkie inne rzeczy. Udało mi sie wcisnąć dwa wzorce projektowe.
  **/
-public class RecipeContainer implements Container{
+public class RecipeContainer implements Container {
     private static int count = 0;
     int index = 0;
     private Recipe [] RecipeList;

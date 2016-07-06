@@ -1,4 +1,4 @@
-package pl.edu.pk.inf.java;
+package pl.edu.pk.inf.java.FileOperations;
 
 
 /**
