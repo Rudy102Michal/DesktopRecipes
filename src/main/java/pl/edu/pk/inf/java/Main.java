@@ -34,15 +34,6 @@ public class Main extends Application {
 
         readRecipesFromFile();          //Tu wczytujemy wszystkie przepisy z pliku.
                                         //Tuż przed startem głównego okna
-
-        /*ReadFileCommand read = new ReadFileCommand();
-        FileCommand file = new FileCommand();//wykonywacz komend
-        file.setMode(read); // ustawiamy wykonywacz komend w tryb zapisu
-        file.execute(); // wykonywacz komend wykonuje zapis
-
-        SaveFileCommand save = new SaveFileCommand();
-        file.setMode(save);
-        file.execute(); */
         primaryStage.setTitle("Menager przepisów 42");
         primaryStage.setOnCloseRequest( e -> {
             AlertBox mess = new AlertBox("Przepisy zostały zapisane.\nZostaną wczytane po ponownym\nuruchomieniu programu.", "Koniec programu");
@@ -64,12 +55,20 @@ public class Main extends Application {
     private void readRecipesFromFile() {
 
         //Tu ma być odczyt przepisów z pliku.
-
+        ReadFileCommand read = new ReadFileCommand();
+        FileCommand file = new FileCommand();//wykonywacz komend
+        file.setMode(read); // ustawiamy wykonywacz komend w tryb zapisu
+        file.execute(); // wykonywacz komend wykonuje zapis
     }
 
     private void saveRecipesToFile() {
 
         //Tu ma być zapis przepisów do pliku.
+
+        SaveFileCommand save = new SaveFileCommand();
+        FileCommand file = new FileCommand();//wykonywacz komend
+        file.setMode(save);
+        file.execute();
 
     }
 }
