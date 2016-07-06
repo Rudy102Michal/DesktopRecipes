@@ -11,7 +11,7 @@
          <children>
             <Label fx:id="recipeNameLabel" layoutX="40.0" layoutY="43.0" text="Nazwa_przepisu">
                <font>
-                  <Font name="Book Antiqua" size="24.0" />
+                  <Font name="Book Antiqua Bold Italic" size="30.0" />
                </font>
             </Label>
             <Label fx:id="recipePrepTimeLabel" layoutX="40.0" layoutY="84.0" text="Czas przygotowania: X-Y min." />
