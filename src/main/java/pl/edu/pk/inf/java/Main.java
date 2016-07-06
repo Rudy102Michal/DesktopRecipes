@@ -2,6 +2,7 @@ package pl.edu.pk.inf.java;
 
 import pl.edu.pk.inf.java.Controllers.BrowseRecipesController;
 import pl.edu.pk.inf.java.Controllers.NewRecipeController;
+import pl.edu.pk.inf.java.DialogBoxes.AlertBox;
 import pl.edu.pk.inf.java.GlobalData.GlobalVars;
 import javafx.application.Application;
 import javafx.beans.binding.Bindings;
@@ -31,15 +32,23 @@ public class Main extends Application {
         Bindings.bindBidirectional(GlobalVars.newRecipeController.buttRecipeAdding.selectedProperty(), GlobalVars.browseRecipesController.buttRecipeAdding.selectedProperty());
         Bindings.bindBidirectional(GlobalVars.newRecipeController.buttRecipesBrowsing.selectedProperty(), GlobalVars.browseRecipesController.buttRecipesBrowsing.selectedProperty());
 
-        ReadFileCommand read = new ReadFileCommand();
+        readRecipesFromFile();          //Tu wczytujemy wszystkie przepisy z pliku.
+                                        //Tuż przed startem głównego okna
+
+        /*ReadFileCommand read = new ReadFileCommand();
         FileCommand file = new FileCommand();//wykonywacz komend
         file.setMode(read); // ustawiamy wykonywacz komend w tryb zapisu
         file.execute(); // wykonywacz komend wykonuje zapis
 
         SaveFileCommand save = new SaveFileCommand();
         file.setMode(save);
-        file.execute();
+        file.execute(); */
         primaryStage.setTitle("Menager przepisów 42");
+        primaryStage.setOnCloseRequest( e -> {
+            AlertBox mess = new AlertBox("Przepisy zostały zapisane.\nZostaną wczytane po ponownym\nuruchomieniu programu.", "Koniec programu");
+            mess.displayMessage();
+            saveRecipesToFile();
+        });
         primaryStage.setResizable(false);
         primaryStage.setScene(GlobalVars.rAddScene);
         GlobalVars.mainStage = primaryStage;
@@ -50,5 +59,17 @@ public class Main extends Application {
     public static void main(String[] args) {
 
         launch(args);
+    }
+
+    private void readRecipesFromFile() {
+
+        //Tu ma być odczyt przepisów z pliku.
+
+    }
+
+    private void saveRecipesToFile() {
+
+        //Tu ma być zapis przepisów do pliku.
+
     }
 }

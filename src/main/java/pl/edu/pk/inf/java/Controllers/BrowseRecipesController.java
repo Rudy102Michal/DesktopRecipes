@@ -5,6 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import pl.edu.pk.inf.java.DataClasses.DefaultTags;
+import pl.edu.pk.inf.java.DataClasses.Ingredient;
 import pl.edu.pk.inf.java.DataClasses.Recipe;
 import pl.edu.pk.inf.java.DialogBoxes.DecisionBox;
 import pl.edu.pk.inf.java.GlobalData.GlobalVars;
@@ -218,7 +219,6 @@ public class BrowseRecipesController extends MainController {
 
     private void actionOnPropertyChanged() {
 
-        System.out.println("lel");
         loadToTableRecipeList(GlobalVars.recipeContainer.findRecipe(getChosenTags(), recipeName.getText()));
 
     }

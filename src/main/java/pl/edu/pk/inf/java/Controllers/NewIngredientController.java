@@ -25,6 +25,8 @@ public class NewIngredientController implements Initializable {
     public ChoiceBox<String> ingredientUnit;
     public Button buttAddIngredient;
 
+    private NewRecipeController parentController;
+
     public void initialize(URL location, ResourceBundle resources) {
         ingredientUnit.getItems().addAll(
                 Unit.GRAM.toString(),
@@ -63,7 +65,7 @@ public class NewIngredientController implements Initializable {
 
         if(!ingredientName.getText().isEmpty() && !ingredientQuantity.getText().isEmpty()) {
             try {
-                GlobalVars.tempIngredient = new Ingredient(ingredientName.getText(), Double.parseDouble(ingredientQuantity.getText()), tempUnit);
+                parentController.setReceivedIngredient(new Ingredient(ingredientName.getText(), Double.parseDouble(ingredientQuantity.getText()), tempUnit));
             }
             catch(NumberFormatException e)
             {
@@ -72,7 +74,6 @@ public class NewIngredientController implements Initializable {
                 ingredientQuantity.clear();
                 return;
             }
-            GlobalVars.dataAvailable = true;
             Stage stage = (Stage) buttAddIngredient.getScene().getWindow();
             stage.close();
         }
@@ -100,8 +101,7 @@ public class NewIngredientController implements Initializable {
         }
     }
 
-    public void meth()
-    {
-        System.out.print("fuck u");
+    public void setParentController(NewRecipeController parentController) {
+        this.parentController = parentController;
     }
 }

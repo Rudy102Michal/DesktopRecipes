@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
 /**
  * Created by Michał on 2016-07-05.
  */
-public class ModifyRecipeController implements Initializable {
+public class ModifyRecipeController extends NewRecipeController {//implements Initializable {
 
     private BrowseRecipesController parentController;
 
@@ -60,6 +60,8 @@ public class ModifyRecipeController implements Initializable {
     public TableColumn<ObservableIngredient, String> tableColumnName;
     public TableColumn<ObservableIngredient, Double> tableColumnQuantity;
     public TableColumn<ObservableIngredient, String> tableColumnUnit;
+
+    private Ingredient receivedIngredient;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -127,33 +129,6 @@ public class ModifyRecipeController implements Initializable {
             checkPolish.setSelected(true);
         if(recipeToModify.recipeTags.contains(DefaultTags.ALCOHOL))
             checkAlcohol.setSelected(true);
-    }
-
-    public void getIngredientFromUser(){
-        Stage stage = new Stage();
-        try {
-            FXMLLoader n1 = new FXMLLoader(getClass().getResource("/newIngredient.fxml"));
-            Parent newWindow = n1.load();
-            NewIngredientController tmpController = n1.getController();
-            stage.setTitle("Dodaj nowy składnik");
-
-            stage.setOnCloseRequest(e -> {
-                e.consume();
-                tmpController.roughExit();
-            });
-            stage.setScene(new Scene(newWindow));
-            stage.showAndWait();
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-
-        if(GlobalVars.dataAvailable) {
-            Ingredient tmpIngredient = GlobalVars.tempIngredient;
-            GlobalVars.dataAvailable = false;
-            ingredientsTable.getItems().add(new ObservableIngredient(tmpIngredient));
-        }
     }
 
     public void modifyThisRecipe(){

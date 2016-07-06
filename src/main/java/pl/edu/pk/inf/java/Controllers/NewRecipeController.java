@@ -55,6 +55,8 @@ public class NewRecipeController extends MainController {
     public TableColumn<ObservableIngredient, Double> tableColumnQuantity;
     public TableColumn<ObservableIngredient, String> tableColumnUnit;
 
+    private Ingredient receivedIngredient;
+
     public void initialize(URL location, ResourceBundle resources) {
 
         super.initialize(location, resources);
@@ -111,7 +113,12 @@ public class NewRecipeController extends MainController {
                     return;
                 }
 
-              //  if(tmp)
+                if(tmpRecipe.getPrepTime(0) <= 0 || tmpRecipe.getPrepTime(1) <= 0 || tmpRecipe.getPrepTime(0) >= tmpRecipe.getPrepTime(1))
+                {
+                    AlertBox mess = new AlertBox("Czas przygotowania musi być większy od zera\noraz czas 'do' musi być większy niż 'od'", "Błędny czas przygotowania" );
+                    mess.displayMessage();
+                    return;
+                }
             }
         }
         catch(ExceptionNoIntegerInput e)
@@ -171,7 +178,7 @@ public class NewRecipeController extends MainController {
         clearObjects();
         tmpRecipe.testPrint();          //container function that takes recipe as argument here
         GlobalVars.recipeContainer.addRecipe(tmpRecipe);
-        displayRecipeToUser(tmpRecipe);          //container function that takes recipe as argument here
+        //displayRecipeToUser(tmpRecipe);          //container function that takes recipe as argument here
     }
 
     private Unit convertUnit(String strUnit)
@@ -219,10 +226,12 @@ public class NewRecipeController extends MainController {
 
     public void getIngredientFromUser(){
         Stage stage = new Stage();
+        NewIngredientController tmpController;
         try {
             FXMLLoader n1 = new FXMLLoader(getClass().getResource("/newIngredient.fxml"));
             Parent newWindow = n1.load();
-            NewIngredientController tmpController = n1.getController();
+            tmpController = n1.getController();
+            tmpController.setParentController(this);
             stage.setTitle("Dodaj nowy składnik");
 
             stage.setOnCloseRequest(e -> {
@@ -237,14 +246,15 @@ public class NewRecipeController extends MainController {
             e.printStackTrace();
         }
 
-        if(GlobalVars.dataAvailable) {
-            Ingredient tmpIngredient = GlobalVars.tempIngredient;
-            GlobalVars.dataAvailable = false;
-            ingredientsTable.getItems().add(new ObservableIngredient(tmpIngredient));
+        if(receivedIngredient != null) {
+            ingredientsTable.getItems().add(new ObservableIngredient(receivedIngredient));
+            receivedIngredient = null;
         }
     }
 
-
+    public void setReceivedIngredient(Ingredient receivedIngredient) {
+        this.receivedIngredient = receivedIngredient;
+    }
 }
 
 
